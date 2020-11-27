@@ -1,0 +1,7 @@
+{
+  "name": "ionic-carzealous",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
