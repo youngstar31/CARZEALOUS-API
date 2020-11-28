@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>car-view</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{car.year}} {{car.make}}</ion-card-title>
+      <ion-card-subtitle>{{car.model}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button disabled>{{car.price}}</ion-button>
+      <ion-button (click) = "goToCarDetails()">View Details</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
