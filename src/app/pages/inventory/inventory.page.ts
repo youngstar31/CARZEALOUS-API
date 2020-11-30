@@ -9,7 +9,7 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class InventoryPage implements OnInit {
 
-  cars: Car[]
+  cars: Car[];
   constructor(private carService: CarService) { }
 
   ngOnInit() {

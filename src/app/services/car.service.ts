@@ -17,6 +17,6 @@ export class CarService {
   }
 
   getCarById(id: number): Observable<any> {
-    return this.http.get<any>(this.url+ `cars/${id}`)
+    return this.http.get<any>(this.url+ `/cars/${id}`)
   }
 }

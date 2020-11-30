@@ -13,9 +13,26 @@
       <ion-label>Car Inventory</ion-label>
     </ion-list-header>
   <ion-list>
-    <ion-item  *ngFor="let car of cars" [routerLink]="['/car-view/',car.id]" >
+    <ion-item  *ngFor="let car of cars" [routerLink]="['/car-view/', car.id]" >
       <ion-label>{{car.year}} {{car.make}} {{car.model}}</ion-label>
     </ion-item>
   </ion-list>
 
 </ion-content>
+
+<!-- <script>
+  const searchbar = document.querySelector('ion-searchbar');
+  const items = Array.from(document.querySelector('ion-list').children);
+
+  searchbar.addEventListener('ionInput', handleInput);
+
+  function handleInput(event) {
+    const query = event.target.value.toLowerCase();
+    requestAnimationFrame(() => {
+      items.forEach(item => {
+        const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
+        item.style.display = shouldShow ? 'block' : 'none';
+      });
+    });
+  }
+</script> -->

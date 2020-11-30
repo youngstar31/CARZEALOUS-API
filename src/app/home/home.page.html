@@ -31,8 +31,35 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Welcome To CARZEALOUS</strong>
-    <p>Start Your Car Enthusiastic Dream Here</p>
-  </div>
+    <ion-content fullscreen scroll-y="false">
+      <ion-slides [options]="slideOpts">
+
+        <ion-slide class="textOverlay">  
+          <img src="../assets/home-slides/supra mrk5.jpg"/>
+          <!-- <h3 class="slideText">Welcome To CARZEALOUS</h3> -->
+        </ion-slide>
+
+        <ion-slide>
+          <img src="../assets/home-slides/p1.jpg"/>
+          <!-- <h3 class="slideText">This Is For All You Car Enthusiast</h3> -->
+          
+        </ion-slide>
+
+        <ion-slide>
+          <img src="../assets/home-slides/carheaven.jpg"/>      
+        </ion-slide>
+
+        <ion-slide>
+          <img src="../assets/home-slides/bmw m4.jpg"/>
+        </ion-slide>
+
+        <ion-slide>
+          <img src="../assets/home-slides/blue lambo.jpg"/>
+        </ion-slide>
+
+      </ion-slides>
+    </ion-content>
+ 
 </ion-content>
+<!-- <strong>Welcome To CARZEALOUS</strong>
+<p>Start Your Car Enthusiastic Dream Here</p> -->

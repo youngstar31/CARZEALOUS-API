@@ -30,3 +30,44 @@
 .active-item {
   border-left: 8px solid var(--ion-color-danger);
 }
+
+ion-title{
+  text-align: center;
+}
+
+.container {
+position: relative;
+text-align: center;
+color: darkgray;
+
+  }
+
+  img {
+    position: relative;
+    // display: block;
+    margin-top: 85px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 900px;
+    max-width: 900px;
+    max-height: 500px;
+    // height: 100%;
+    // margin-bottom: auto;
+  }
+//   ion-slides {
+//     justify-content: center;
+//     align-items: center;
+//   }
+//   .textOverlay {
+//   	position: relative;
+//   	margin-left: auto;
+//   	margin-right: auto;
+// }
+.slideText {
+  position: absolute;
+  top: 450px;
+  left: 380px;
+color: white;
+text-align: center;
+background-color: black;
+}

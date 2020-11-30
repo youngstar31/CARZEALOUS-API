@@ -9,13 +9,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./car-view.page.scss'],
 })
 export class CarViewPage implements OnInit {
-car: Car
+car = new Car();
  id = this.activatedRoute.snapshot.params[`id`];
   constructor(private carService: CarService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    
-    this.carService.getCarById(this.id).subscribe(
+    const idOfCar = this.activatedRoute.snapshot.params[`id`];
+    this.carService.getCarById(idOfCar).subscribe(
       data => {
         this.car = data;
       }
