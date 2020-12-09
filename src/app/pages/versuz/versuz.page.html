@@ -1,9 +1,139 @@
-<ion-header>
+<!-- <ion-split-pane when="sm"> -->
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>versuz</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>CARZEALOUS</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <h3>Pick Two Cars and Make Them Go Head to Head</h3>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-item id="carLabel"> 
+            <ion-label position = "floating" >Car 1</ion-label>
+            <ion-select (ionChange)= "getCar1Details()" [compareWith]="compareWith" [(ngModel)]="selectedCar1" placeholder="Select a car">
+              <ion-select-option *ngFor="let car of cars" [value]="car">{{car.year + ' ' + car.make + ' ' + car.model}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        <ion-card *ngIf="selectedCar1.id != null" > 
+        <ion-card-header>
+          <ion-thumbnail>
+            <img sizes="500px" [src]="selectedCar1.displayUrl">
+          </ion-thumbnail>
+          <ion-card-title>
+            {{selectedCar1.year}} {{selectedCar1.make}}
+          </ion-card-title>
+          <ion-card-subtitle>
+            {{selectedCar1.model}}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label slot="start">Horsepower</ion-label>
+              <ion-label text-wrap >{{car1Engine.horsepower}} hp</ion-label>
+              <ion-icon *ngIf="car1Engine.horsepower > car2Engine.horsepower" id="greater-than" slot="end" name="caret-up"></ion-icon>
+              <ion-icon *ngIf="car1Engine.horsepower < car2Engine.horsepower" id="less-than" slot="end" name="caret-down"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label slot="start">Engine Type:</ion-label>
+              <ion-label text-wrap >{{car1Engine.engineType}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label slot="start">Torque:</ion-label>
+              <ion-label text-wrap >{{car1Engine.torque}} lbs-ft</ion-label>
+              <ion-icon *ngIf="car1Engine.torque > car2Engine.torque" id="greater-than" slot="end" name="caret-up"></ion-icon>
+              <ion-icon *ngIf="car1Engine.torque < car2Engine.torque" id="less-than" slot="end" name="caret-down"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-label slot="start">Transmission:</ion-label>
+              <ion-label text-wrap >{{car1Transmission.numOfSpeeds}} Speed {{car1Transmission.transmissionType}}</ion-label>
+              <ion-icon *ngIf="car1Transmission.numOfSpeeds > car2Transmission.numOfSpeeds" id="greater-than" slot="end" name="caret-up"></ion-icon>
+              <ion-icon *ngIf="car1Transmission.numOfSpeeds < car2Transmission.numOfSpeeds" id="less-than" slot="end" name="caret-down"></ion-icon>
+            </ion-item>     
+          <ion-item>
+            <ion-label slot="start">MPG:</ion-label>
+            <ion-label text-wrap >{{car1Engine.mpg}}</ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-button [routerLink]="['/car-view/', selectedCar1.id]">Go To Car View</ion-button>
+        </ion-card-content>   
+      </ion-card>
+    </ion-col>
+    </ion-row>
+
+      <ion-row>
+      <ion-col>
+        <ion-item id="carLabel">
+          <ion-label position = "floating" >Car 2</ion-label>
+          <ion-select (ionChange)="getCar2Details()" [compareWith]="compareWith" [(ngModel)]="selectedCar2"  placeholder="Select a 2nd car">
+            <ion-select-option *ngFor="let car of cars" [value]="car">{{car.year + ' ' + car.make + ' ' + car.model}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-card *ngIf="selectedCar2.id != null">
+          <ion-card-header>
+            <ion-thumbnail>
+              <img slot="start" [src]="selectedCar2.displayUrl">
+            </ion-thumbnail>
+            <ion-card-title>{{selectedCar2.year}} {{selectedCar2.make}}</ion-card-title>
+            <ion-card-subtitle>{{selectedCar2.model}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label slot="start">Horsepower</ion-label>
+                <ion-label text-wrap >{{car2Engine.horsepower}} hp</ion-label>
+                <ion-icon *ngIf="car2Engine.horsepower > car1Engine.horsepower" id="greater-than" slot="end" name="caret-up"></ion-icon>
+              <ion-icon *ngIf="car2Engine.horsepower < car1Engine.horsepower" id="less-than" slot="end" name="caret-down"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-label slot="start">Engine Type:</ion-label>
+                <ion-label text-wrap >{{car2Engine.engineType}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label slot="start">Torque:</ion-label>
+                <ion-label text-wrap >{{car2Engine.torque}} lbs-ft</ion-label>
+                <ion-icon *ngIf="car2Engine.torque > car1Engine.torque" id="greater-than" slot="end" name="caret-up"></ion-icon>
+              <ion-icon *ngIf="car2Engine.torque < car1Engine.torque" id="less-than" slot="end" name="caret-down"></ion-icon>
+              </ion-item>
+              <ion-item>
+                <ion-label slot="start">Transmission:</ion-label>
+                <ion-label text-wrap >{{car2Transmission.numOfSpeeds}} Speed {{car2Transmission.transmissionType}}</ion-label>
+                <ion-icon *ngIf="car2Transmission.numOfSpeeds > car1Transmission.numOfSpeeds" id="greater-than" slot="end" name="caret-up"></ion-icon>
+              <ion-icon *ngIf="car2Transmission.numOfSpeeds < car1Transmission.numOfSpeeds" id="less-than" slot="end" name="caret-down"></ion-icon>
+              </ion-item>     
+            <ion-item>
+              <ion-label slot="start">MPG:</ion-label>
+              <ion-label text-wrap >{{car2Engine.mpg}}</ion-label>
+            </ion-item>
+          </ion-list>
+          <ion-button slot="end" [routerLink]="['/car-view/', selectedCar2.id]">Go To Car View</ion-button>
+          </ion-card-content>   
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    
+
+  </ion-grid>
 
 </ion-content>
+
+<div class="footer-basic">
+  <ion-footer>
+    <ion-toolbar>
+      <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+    
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">About</a></li>
+      </ul>
+      <p class="copyright">YOUNGSTAR © 2020</p>
+    </ion-toolbar> 
+  </ion-footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<!-- </ion-split-pane> -->

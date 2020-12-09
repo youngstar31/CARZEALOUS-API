@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'versuz',
     loadChildren: () => import('./pages/versuz/versuz.module').then( m => m.VersuzPageModule)
   },
+  {
+    path: 'contact',
+    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+  },
 ];
 
 @NgModule({

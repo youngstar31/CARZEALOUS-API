@@ -1,9 +1,64 @@
+<!-- <ion-split-pane> -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>car-details</ion-title>
+    <ion-title>CARZEALOUS</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+
+  <ion-card>
+    <ion-buttons>
+      <ion-back-button defaultHref="/car-view/, car.id"></ion-back-button>
+    </ion-buttons>
+    <h2>Overview:</h2>
+    <p>{{car.overview}}</p>
+    <ion-img [src]="car.displayUrl2"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{car.year}} {{car.make}}</ion-card-title>
+      <ion-card-subtitle>{{car.model}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label slot="start">Horsepower</ion-label>
+          <ion-label  >{{engine.horsepower}} hp</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label slot="start">Engine Type:</ion-label>
+          <ion-label  text-wrap >{{engine.engineType}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label slot="start">Torque:</ion-label>
+          <ion-label  >{{engine.torque}} lbs-ft</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label slot="start">Transmission:</ion-label>
+          <ion-label text-wrap >{{transmission.numOfSpeeds}} Speed {{transmission.transmissionType}}</ion-label>
+        </ion-item>     
+      <ion-item>
+        <ion-label slot="start">MPG:</ion-label>
+        <ion-label text-wrap>{{engine.mpg}}</ion-label>
+      </ion-item>
+    </ion-list>
+   
+    </ion-card-content>
+   
+  </ion-card>
 
 </ion-content>
+<div class="footer-basic">
+  <ion-footer>
+    <ion-toolbar>
+      <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+    
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">About</a></li>
+      </ul>
+      <p class="copyright">YOUNGSTAR © 2020</p>
+    </ion-toolbar> 
+  </ion-footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<!-- </ion-split-pane> -->
